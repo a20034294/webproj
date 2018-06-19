@@ -2,8 +2,9 @@
 var canvas,
 	ctx,
 	width,
-	height;
-
+	height,
+	img_rock,
+	background;
 
 function init(){
 	
@@ -11,6 +12,13 @@ function init(){
 	width = canvas.width;
 	height = canvas.height;
 	ctx = canvas.getContext('2d');
+//img
+	img_rock= new Image();
+	img_rock.src='./rock.jpg';
+	background = new Image();
+	background.src='./grass.jpg';
+
+
 	window.onkeydown = keyLogger.keyDownListener;
 	window.onkeyup = keyLogger.keyUpListener;
 	window.addEventListener('mousemove',(e) => {
@@ -20,7 +28,7 @@ function init(){
 	})
 	//Init player
 	player.x = width/2;
-	player.y = height/2;
+	player.y = height*2/3;
 	
 	//Main game loop
 	
@@ -45,12 +53,15 @@ function renderGame(){
 	targets.render(ctx);
 }
 function renderBackground(){
-	ctx.fillStyle = "#c6c6c6";
+	//ctx.fillStyle = "#c6c6c6";
+	ctx.fillStyle = ctx.createPattern(background,'repeat');
 	ctx.fillRect(0,0,width,height);
 
 }
 function renderobstacle(){
-	ctx.fillStyle = "rgb(150,150,0)";
-    ctx.fillRect (200, 200, 55, 200);
-    ctx.fillRect (800, 100, 200, 55);
+	//ctx.fillStyle = "rgb(150,150,0)";
+    ctx.drawImage(img_rock,200, 50, 100, 300);
+    ctx.drawImage(img_rock,500,300, 300, 100);
+    ctx.drawImage(img_rock,750,100, 300, 100);
+    ctx.drawImage(img_rock,900,400, 100, 200);
 }

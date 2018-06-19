@@ -12,34 +12,50 @@ function Player(){
 	this.stats = {maxV:100,dAngle:0.03,acc:2,shootDelayMs:100};
 	this.update = function(dt){
 		if(keyLogger.keyStatus.up){
-			if(this.y < 412 && this.y >200 && this.x < 260 && this.x > 190)
+			if(this.y < 362 && this.y >40 && this.x < 312 && this.x > 188)			
 				this.y = this.y;
-			else if(this.y < 167 && this.y >100 && this.x < 1010 && this.x > 790)
+			else if(this.y < 412 && this.y >290 && this.x < 812 && this.x > 488)
+				this.y = this.y;
+			else if(this.y < 212 && this.y >90 && this.x < 1062 && this.x > 738)
+				this.y = this.y;
+			else if(this.y < 612 && this.y >390 && this.x < 1012 && this.x > 888)
 				this.y = this.y;
 			else
 				this.y -= this.stats.acc;
 		}
 		if(keyLogger.keyStatus.down){
-			if(this.y < 410 && this.y >190 && this.x < 260 && this.x > 190) 
+			if(this.y < 360 && this.y >37 && this.x < 312 && this.x > 188)
 				this.y = this.y;
-			else if(this.y < 160 && this.y >87 && this.x < 1010 && this.x > 790)
+			else if(this.y < 410 && this.y >287 && this.x < 812 && this.x > 488)
+				this.y = this.y;
+			else if(this.y < 210 && this.y >87 && this.x < 1062 && this.x > 738)
+				this.y = this.y;
+			else if(this.y < 610 && this.y >387 && this.x < 1012 && this.x > 888)
 				this.y = this.y;
 			else
 			this.y += this.stats.acc;
 		}
 		if(keyLogger.keyStatus.left){
-			if(this.y < 410 && this.y >193 && this.x < 270 && this.x > 190) 
+			if(this.y < 360 && this.y >40 && this.x < 314 && this.x > 188)
 				this.x = this.x;
-			else if(this.y < 165 && this.y >100 && this.x < 1015 && this.x > 790)
-				this.y = this.y;
+			else if(this.y < 410 && this.y >290 && this.x < 814 && this.x > 488)
+				this.x = this.x;
+			else if(this.y < 210 && this.y >90 && this.x < 1064 && this.x > 738)
+				this.x = this.x;
+			else if(this.y < 610 && this.y >390 && this.x < 1014 && this.x > 888)
+				this.x = this.x;
 			else
 				this.x -= this.stats.acc;
 		}
 		if(keyLogger.keyStatus.right){
-			if(this.y < 410 && this.y >193 && this.x < 260 && this.x > 185) 
+			if(this.y < 360 && this.y >40 && this.x < 312 && this.x > 186)
 				this.x = this.x;
-			else if(this.y < 165 && this.y >90 && this.x < 1000 && this.x > 785)
-				this.y = this.y;
+			else if(this.y < 410 && this.y >290 && this.x < 812 && this.x > 486)
+				this.x = this.x;
+			else if(this.y < 210 && this.y >90 && this.x < 1062 && this.x > 736)
+				this.x = this.x;
+			else if(this.y < 610 && this.y >390 && this.x < 1012 && this.x > 886)
+				this.x = this.x;
 			else
 			this.x += this.stats.acc;
 			

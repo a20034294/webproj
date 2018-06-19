@@ -28,9 +28,13 @@ function Bullets(){
 			obj.x += obj.vx * dt;
 			obj.y += obj.vy * dt;
 			//Detect if on screen
-			if(obj.x>200 && obj.x<255 && obj.y <400 && obj.y > 200)
+			if(obj.x>200 && obj.x<300 && obj.y <350 && obj.y > 50)
 				delete this.objects[i];
-			else if(obj.x>800 && obj.x<1000 && obj.y <155 && obj.y > 100)
+			else if(obj.x>500 && obj.x<800 && obj.y <400 && obj.y > 300)
+				delete this.objects[i];
+			else if(obj.x>750 && obj.x<1050 && obj.y <200 && obj.y > 100)
+				delete this.objects[i];
+			else if(obj.x>900 && obj.x<1000 && obj.y <600 && obj.y > 400)
 				delete this.objects[i];
 			if(
 				obj.x < 0 || obj.y < 0 ||
