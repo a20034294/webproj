@@ -2,32 +2,34 @@
 
 <body>
 	<script>
-
-		var ws = new WebSocket('ws://140.116.250.16:8764');
-		var ws2 = new WebSocket('ws://140.116.250.16:8765');
+		var name = "thename";
+		var id = 0;
+		// java script
+		//dd
+		//var ws = new WebSocket('ws://140.116.250.16:8764');
+		//var ws2 = new WebSocket('ws://140.116.250.16:8765');
+		var ws = new WebSocket('ws://127.0.0.1:8764');
+		var ws2 = new WebSocket('ws://127.0.0.1:8765');
 		ws.onopen = function (evt) {
 			console.log("ws Connection open ...");
-			ws.send("0 1 1");
+			//ws.send("qwer 2");
 		};
 		ws2.onopen = function (evt) {
 			console.log("ws2 Connection open ...");
 		};
-		var i = 0;
+
+
 		ws2.onmessage = function (evt) {
-
-			if (i == 5) {
-				document.body.innerHTML = "";
-				i = 0;
-			}
-			i = i + 1;
-			document.write(evt.data + "<br>");
-
-			//ws.send("3 " + Math.floor((Math.random() * 4) + 1) + " 1");
-			//ws.send("Hello WebSockts!");
+			console.log(evt.data);
 		};
 
+
+
 		ws.onclose = function (evt) {
-			console.log("Connection closed.");
+			console.log("ws Connection closed.");
+		};
+		ws2.onclose = function (evt) {
+			console.log("ws2 Connection closed.");
 		};
 
 	</script>

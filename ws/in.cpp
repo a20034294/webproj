@@ -13,12 +13,9 @@ player data[1000];
 int main() {
     int i = 0;
     int a, b, c, d, id, type, x, y;
-    char name[100];
-    cin >> name >> id;
-    r = fopen("in.txt", "r");
-    while (~fscanf(r, "%d%d%d%d", &a, &b, &c, &d)) {
-        data[a] = player(a, b, c, d);
-    }
+    char name[100] = "qwer\0";
+
+       id = 2;
 
     w = fopen("id_name.txt", "a+");
     fprintf(w, "%s %d\n", name, id);
@@ -37,7 +34,7 @@ int main() {
             continue;
         }
         r = fopen("in.txt", "r");
-        while (~fscanf(r, "%d%d%d%d", &a, &b, &c, &d)) {
+        while (~fscanf(r, "%d %d %d %d", &a, &b, &c, &d)) {
             data[a] = player(a, b, c, d);
         }
         data[id] = player(id, type, x, y);

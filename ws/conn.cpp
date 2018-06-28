@@ -13,27 +13,33 @@ player data[1000];
 int main() {
     int i = 0;
 
-    r = fopen("in.txt", "r");
     int id, type, x, y;
     float angle;
     char c;
     // system("cls");
+
+    r = fopen("in.txt", "r");
+
     while (~fscanf(r, "%d%d%d%d", &id, &type, &x, &y)) {
         data[i].id = id;
         data[i].type = type;
         data[i].x = x;
         data[i++].y = y;
     }
-    cout << "r " << i << endl;
+    fclose(r);
+
+    printf("r %d\n", i);
 
     while (1) {
         Sleep(100);
+        system("cls");
+
         r = fopen("in.txt", "r");
         int id, type, x, y;
-        system("cls");
-        while (~fscanf(r, "%d%d%d%d", &id, &type, &x, &y)) {
+
+        while (~fscanf(r, "%d %d %d %d", &id, &type, &x, &y)) {
             printf("%d %d %d %d\n", id, type, x, y);
-            cout << "a" << endl;
+            // cout << "a" << endl;
         }
         fclose(r);
         r = fopen("enemy.txt", "r");

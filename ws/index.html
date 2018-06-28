@@ -2,50 +2,58 @@
 
 <body>
 	<script>
+		var name = "thename";
+		var id = 0;
 		// java script
 		//dd
-		var ws = new WebSocket('ws://140.116.250.16:8764');
-		var ws2 = new WebSocket('ws://140.116.250.16:8765');
+		//var ws = new WebSocket('ws://140.116.250.16:8764');
+		//var ws2 = new WebSocket('ws://140.116.250.16:8765');
+		var ws = new WebSocket('ws://127.0.0.1:8764');
+		var ws2 = new WebSocket('ws://127.0.0.1:8765');
 		ws.onopen = function (evt) {
 			console.log("ws Connection open ...");
-
-
 		};
 		ws2.onopen = function (evt) {
 			console.log("ws2 Connection open ...");
 		};
 		var i = 0, j = 0;
-		var name = "thename";
-		var id = 0;
+
 
 		ws2.onmessage = function (evt) {
+
 			if (evt.data.slice(0, 1) == "r") {
 				id = parseInt(evt.data.slice(2));
 				console.log(id);
-				ws.send(name);
+				ws.send(name + " " + id);
 				return;
 			}
-			if (i == 50000) {
+
+			if (i == 6) {
 				document.body.innerHTML = "";
 				i = 0;
+				//console.clear();
 			}
 			i = i + 1;
+
+			console.log(evt.data);
 			document.write(evt.data + "<br>");
 			if (j % 50 == 0) {
-				ws.send("2 " + id + " " + Math.floor((Math.random() * 4) + 1) + " 1");
+				//ws.send(id + " 2 " + Math.floor((Math.random() * 4) + 1) + " 1");
+				//console.log(id + " 2 " + Math.floor((Math.random() * 4) + 1) + " 1");
 				//console.log("f");
 			}
 			j = j + 1;
 
 
-			//ws.send("Hello WebSockts!");
 		};
-		//
 
 		//id type x y
 
 		ws.onclose = function (evt) {
-			console.log("Connection closed.");
+			console.log("ws Connection closed.");
+		};
+		ws2.onclose = function (evt) {
+			console.log("ws2 Connection closed.");
 		};
 
 	</script>

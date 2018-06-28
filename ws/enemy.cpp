@@ -16,10 +16,10 @@ int main() {
     srand(time(NULL));
     while (1) {
         Sleep(2000);
-        freopen("enemy.txt", "w", stdout);
+        w = fopen("enemy.txt", "w");
+        fprintf(w, "e %d %d %f", rand() % 1280, rand() % 720,
+                (float)(rand() % 6282) / 1000);
 
-        cout << "e " << rand() % 1280 << " " << rand() % 720 << " "
-             << (float)(rand() % 6282) / 1000 << endl;
         // fclose(w);
         fclose(w);
     }
