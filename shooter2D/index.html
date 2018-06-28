@@ -2,6 +2,12 @@
 
 <head>
 	<title>Shooter 2D</title>
+	<style type="text/css">
+		#id_list {position: absolute;left: 1400px;top: 30;width: 50 height: 30px;float: right;}
+		#score_list {position: absolute;left: 1290px;top: 30;width: 50 height: 30px;float: right;}
+		#txt1 {float: right;}
+		#txt2 {float: right;}	
+	</style>
 	<script src="keyLogger.js"></script>
 	<script src="player.js"></script>
 	<script src="bullets.js"></script>
@@ -12,6 +18,15 @@
 </head>
 
 <body onload="init();">
+	<input type="text" id="txt1">
+	<input type="text" id="txt2">
+	<input type="button" id="btn1" value="add a player">
+	<input type="button" id="btn2" value="remove a player">
+	<ul id="id_list">
+	</ul>
+	<ul id="score_list">
+	</ul>
+	<script src="score_list.js"></script>
 	<canvas id="canvas" width="1280" height="720" ; ">
 	</body>
 </html>

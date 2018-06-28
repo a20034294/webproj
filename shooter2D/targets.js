@@ -1,24 +1,12 @@
 var targets = new Targets();
-
-/*
-	Target{
-		x,
-		y,
-		v,
-		angle,
-		color,
-		size,
-		remove,
-		hitAnimClock
-	}
-	
-*/
+var img = new Image();
+	img.src = './1.png';
 function Targets(){
 	
 	this.objects = [];
 	this.maxID = 0;
-	
 	this.init = function(target){
+		target.src = img_rock;
 		target.vx = target.v * Math.cos(target.angle);
 		target.vy = target.v * Math.sin(target.angle);
 		target.hitAnimClock = -1;
@@ -26,7 +14,6 @@ function Targets(){
 		target.alpfa = 0;
 		target.nextAlpfa = 1;
 	}
-	
 	this.push = function(target){
 		this.init(target);
 		var i = -1;
@@ -57,9 +44,14 @@ function Targets(){
 			
 			if(obj.alpfa > 0.1){
 				var info = bullets.getMinInfo(obj);
-				
+				var p_info = player.getMinInfo(obj);
 				if(info.dist <= obj.size * obj.scale){     
 					info.object.remove = true;
+					if(obj.hitAnimClock == -1)
+						obj.hitAnimClock = 0;
+				}
+				else if(p_info.dist <= obj.size * obj.scale){
+					p_info.object.remove = true;
 					if(obj.hitAnimClock == -1)
 						obj.hitAnimClock = 0;
 				}
@@ -80,18 +72,13 @@ function Targets(){
 			delete this.objects[i];
 		}
 		
-		if(this.getSize() < 5){
+		if(this.getSize() < 10){
 			this.push({
 				x:Math.random()*width,
 				y:Math.random()*height,
 				v:5,
 				angle:Math.random()*2*Math.PI,
-				size:25,
-				color:{
-					r:Math.random(),
-					g:Math.random(),
-					b:Math.random(),
-				}
+				size:25,	
 			});
 		}
 		
@@ -110,12 +97,8 @@ function Targets(){
 				obj.scale = 1 + 2 * obj.hitAnimClock;
 				obj.nextAlpfa = obj.alpfa;
 			}
-			ctx.fillStyle = utils.getARGBString(
-				obj.alpfa,
-				obj.color.r,
-				obj.color.g,
-				obj.color.b
-			);
+			pattern = ctx.createPattern(img,'repeat');
+			ctx.fillStyle = pattern;
 			ctx.globalAlpha=obj.alpfa;
 			ctx.beginPath();
 			ctx.arc(obj.x,obj.y,obj.size * obj.scale,0,6.28);

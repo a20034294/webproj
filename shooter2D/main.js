@@ -14,9 +14,11 @@ function init() {
 	ctx = canvas.getContext('2d');
 	//img
 	img_rock = new Image();
-	img_rock.src = './rock.jpg';
+	img_rock.src = './spike 2.png';
+	img_rock2 = new Image();
+	img_rock2.src = './spike 1.png';
 	background = new Image();
-	background.src = './grass.jpg';
+	background.src = './background.png';
 
 
 	window.onkeydown = keyLogger.keyDownListener;
@@ -32,7 +34,7 @@ function init() {
 	//Main game loop
 
 	setInterval(function () {
-		updateGame(0.01);
+		updateGame(0.5);
 		renderGame();
 		renderobstacle();
 	}, 10);
@@ -40,7 +42,7 @@ function init() {
 }
 
 function updateGame(dt) {
-	bullets.update(dt);
+	bullets.update(dt*0.02);
 	targets.update(dt);
 	player.update(dt);
 }
@@ -60,7 +62,7 @@ function renderBackground() {
 function renderobstacle() {
 	//ctx.fillStyle = "rgb(150,150,0)";
 	ctx.drawImage(img_rock, 200, 50, 100, 300);
-	ctx.drawImage(img_rock, 500, 300, 300, 100);
-	ctx.drawImage(img_rock, 750, 100, 300, 100);
+	ctx.drawImage(img_rock2, 500, 300, 300, 100);
+	ctx.drawImage(img_rock2, 750, 100, 300, 100);
 	ctx.drawImage(img_rock, 900, 400, 100, 200);
 }
