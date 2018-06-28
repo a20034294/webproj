@@ -33,6 +33,7 @@ int main() {
         system("cls");
         while (~fscanf(r, "%d%d%d%d", &id, &type, &x, &y)) {
             printf("%d %d %d %d\n", id, type, x, y);
+            cout << "a" << endl;
         }
         fclose(r);
         r = fopen("enemy.txt", "r");
