@@ -40,7 +40,7 @@ function Targets() {
 	this.update = function (dt) {
 		console.log(grade);//retrun grade
 		changeScore(playerName, grade);
-		console.log(playerName);
+		//console.log(playerName);
 		for (var i = 0; i < this.maxID; i++) {
 			if (this.objects[i] == undefined) continue;
 			var obj = this.objects[i];

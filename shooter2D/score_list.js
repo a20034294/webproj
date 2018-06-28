@@ -9,10 +9,11 @@ var oTxt1 = document.getElementById('txt1');
 oBtn1.onclick = function () {
 	var aLi1 = document.createElement('li');
 	var aLi2 = document.createElement('li');
+
 	aLi1.innerHTML = oTxt1.value;
 	aLi2.innerHTML = "";
-	oUl1.appendChild(aLi1);
-	oUl2.appendChild(aLi2);
+	oUl2.appendChild(aLi1);
+	oUl1.appendChild(aLi2);
 	playerName = aLi1.innerHTML;
 	console.log(aLi1.innerHTML);
 	oTxt1.hidden = true;
@@ -21,7 +22,7 @@ oBtn1.onclick = function () {
 };
 oBtn2.onclick = function () {
 	for (var i = 0; i < oUl1.childNodes.length; i++) {
-		if (oUl1.children[i].innerHTML == oTxt1.value) {
+		if (oUl2.children[i].innerHTML == oTxt1.value) {
 			oUl1.removeChild(oUl1.children[i]);
 			oUl2.removeChild(oUl2.children[i]);
 			break;
@@ -33,8 +34,8 @@ oBtn2.onclick = function () {
 };
 function changeScore(name, score) {
 	for (var i = 0; i < oUl1.childNodes.length; i++) {
-		if (oUl1.children[i].innerHTML == name) {
-			oUl2.children[i].innerHTML = score;
+		if (oUl2.children[i].innerHTML == name) {
+			oUl1.children[i].innerHTML = "分數: " + score;
 			break;
 		}
 	}
