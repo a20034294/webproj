@@ -49,9 +49,9 @@ function updateGame(dt) {
 	bullets.update(dt*0.02);
 	targets.update(dt);
 	player.update(dt);
-	hp = targets.player_health();
+	hp = targets.player_health();//main get playerhealth 若hp < 0 endgame
 	if(hp <= 0){
-		clearInterval(refresh);//重制interval
+		clearInterval(refresh);//重制interval 
 		setInterval(function () {
 		gameover();
 	}, 10);

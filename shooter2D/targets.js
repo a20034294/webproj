@@ -1,5 +1,5 @@
 var targets = new Targets();
-var player_hp = 2;
+var player_hp = 2;//初始化player health
 var img = new Image();
 	img.src = './1.png';
 function Targets(){
@@ -30,7 +30,7 @@ function Targets(){
 		}
 		return size;
 	};
-	this.player_health = function(){
+	this.player_health = function(){//回傳playerhealth值
 		return player_hp;
 	};
 	this.update = function(dt){
