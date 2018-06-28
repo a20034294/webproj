@@ -1,4 +1,5 @@
 var targets = new Targets();
+var player_hp = 2;
 var img = new Image();
 	img.src = './1.png';
 function Targets(){
@@ -29,7 +30,9 @@ function Targets(){
 		}
 		return size;
 	};
-	
+	this.player_health = function(){
+		return player_hp;
+	};
 	this.update = function(dt){
 		for(var i = 0;i < this.maxID;i++){
 			if(this.objects[i] == undefined) continue;
@@ -52,6 +55,7 @@ function Targets(){
 				}
 				else if(p_info.dist <= obj.size * obj.scale){
 					p_info.object.remove = true;
+					player_hp = player_hp - 0.5;
 					if(obj.hitAnimClock == -1)
 						obj.hitAnimClock = 0;
 				}
@@ -81,8 +85,6 @@ function Targets(){
 				size:25,	
 			});
 		}
-		
-		
 	};
 	this.render = function(ctx){
 		for(var i = 0;i < this.maxID;i++){
@@ -106,9 +108,4 @@ function Targets(){
 			ctx.globalAlpha=1;
 		}
 	};
-	
-	
-	
-	
-	
 }

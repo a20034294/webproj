@@ -4,7 +4,9 @@ var canvas,
 	width,
 	height,
 	img_rock,
-	background;
+	background,
+	hp,
+	refresh;
 
 function init() {
 
@@ -33,18 +35,27 @@ function init() {
 
 	//Main game loop
 
-	setInterval(function () {
+	refresh = setInterval(function () {
 		updateGame(0.5);
 		renderGame();
 		renderobstacle();
 	}, 10);
-
+	this.gameover = function(){
+		ctx.drawImage(background,0,0, canvas.width,canvas.height);//endgame
+	}
 }
 
 function updateGame(dt) {
 	bullets.update(dt*0.02);
 	targets.update(dt);
 	player.update(dt);
+	hp = targets.player_health();
+	if(hp <= 0){
+		clearInterval(refresh);//重制interval
+		setInterval(function () {
+		gameover();
+	}, 10);
+	}
 }
 
 function renderGame() {
