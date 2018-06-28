@@ -11,7 +11,7 @@ function Player() {
 	this.v = 0;
 	this.angle = 0;
 	this.lastShootTime = 0;
-	this.stats = { maxV: 100, dAngle: 0.03, acc: 2, shootDelayMs: 100 };
+	this.stats = { acc: 2, shootDelayMs: 100 };
 	this.update = function (dt) {
 		if (keyLogger.keyStatus.up) {
 			if (this.y < 362 && this.y > 40 && this.x < 312 && this.x > 188)
@@ -21,6 +21,8 @@ function Player() {
 			else if (this.y < 212 && this.y > 90 && this.x < 1062 && this.x > 738)
 				this.y = this.y;
 			else if (this.y < 612 && this.y > 390 && this.x < 1012 && this.x > 888)
+				this.y = this.y;
+			else if (this.y < 10)
 				this.y = this.y;
 			else
 				this.y -= this.stats.acc;
@@ -35,6 +37,8 @@ function Player() {
 				this.y = this.y;
 			else if (this.y < 610 && this.y > 387 && this.x < 1012 && this.x > 888)
 				this.y = this.y;
+			else if (this.y > 710)
+				this.y = this.y;
 			else
 				this.y += this.stats.acc;
 			console.log(this.id + " " + this.type + " " + this.x + " " + this.y);
@@ -48,6 +52,8 @@ function Player() {
 				this.x = this.x;
 			else if (this.y < 610 && this.y > 390 && this.x < 1014 && this.x > 888)
 				this.x = this.x;
+			else if (this.x < 10)
+				this.x = this.x;
 			else
 				this.x -= this.stats.acc;
 			console.log(this.id + " " + this.type + " " + this.x + " " + this.y);
@@ -60,6 +66,8 @@ function Player() {
 			else if (this.y < 210 && this.y > 90 && this.x < 1062 && this.x > 736)
 				this.x = this.x;
 			else if (this.y < 610 && this.y > 390 && this.x < 1012 && this.x > 886)
+				this.x = this.x;
+			else if (this.x > 1270)
 				this.x = this.x;
 			else
 				this.x += this.stats.acc;
@@ -94,7 +102,6 @@ function Player() {
 		ctx.beginPath();
 		ctx.arc(this.x, this.y, 10, 0, 6.28);
 		ctx.fill();
-
 		ctx.strokeStyle = "#FF0000";
 		ctx.beginPath();
 		ctx.moveTo(this.x, this.y);
@@ -104,6 +111,19 @@ function Player() {
 			this.y + pointerLength * Math.sin(this.angle)
 		);
 		ctx.stroke();
+	};
+	this.getMinInfo = function (o) {
+		var dist = 99999;
+		var obj;
+			var d = Math.sqrt(
+				(o.x - this.x) * (o.x - this.x) +
+				(o.y - this.y) * (o.y - this.y)
+			);
+			if (d < dist) {
+				dist = d;
+				obj = this;
+			}
+		return { dist: dist, object: obj };
 	};
 
 }

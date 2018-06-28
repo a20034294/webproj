@@ -46,7 +46,7 @@ function Bullets() {
 	}
 
 	this.render = function (ctx) {
-		ctx.fillStyle = "#000000";
+		ctx.fillStyle = "#FF0000";
 		for (var i = 0; i < this.maxID; i++) {
 			if (this.objects[i] == undefined) continue;
 
