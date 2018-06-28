@@ -40,7 +40,7 @@ function Bullets() {
 				obj.x > width || obj.y > height ||
 				obj.remove)
 				delete this.objects[i];
-			console.log(i + " " + obj.type + " " + obj.x + " " + obj.y);
+			
 			//ws.send(id + " " + obj.type + " " + obj.x + " " + obj.y);
 		}
 	}

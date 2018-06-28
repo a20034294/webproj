@@ -1,6 +1,8 @@
 var targets = new Targets();
+var player_hp = 10;//初始化player health
 var img = new Image();
 	img.src = './1.png';
+var grade = 0;//init grade
 function Targets(){
 	
 	this.objects = [];
@@ -29,8 +31,14 @@ function Targets(){
 		}
 		return size;
 	};
-	
+	this.player_health = function(){//回傳playerhealth值
+		return player_hp;
+	};
+	this.get_grade = function(){
+		return grade;
+	}
 	this.update = function(dt){
+		console.log(grade);//retrun grade
 		for(var i = 0;i < this.maxID;i++){
 			if(this.objects[i] == undefined) continue;
 			var obj = this.objects[i];
@@ -40,18 +48,21 @@ function Targets(){
 			
 			if(obj.alpfa != obj.nextAlpfa){
 				obj.alpfa += (obj.nextAlpfa - obj.alpfa)/10
-			}
+			}2
 			
 			if(obj.alpfa > 0.1){
 				var info = bullets.getMinInfo(obj);
 				var p_info = player.getMinInfo(obj);
 				if(info.dist <= obj.size * obj.scale){     
 					info.object.remove = true;
+					grade = grade + 50;
 					if(obj.hitAnimClock == -1)
 						obj.hitAnimClock = 0;
 				}
 				else if(p_info.dist <= obj.size * obj.scale){
 					p_info.object.remove = true;
+					grade = grade-20;
+					player_hp = player_hp - 0.5;
 					if(obj.hitAnimClock == -1)
 						obj.hitAnimClock = 0;
 				}
@@ -63,8 +74,6 @@ function Targets(){
 					continue;
 				}
 			}
-			
-			//Detect if on screen
 			if(
 				obj.x < 0 || obj.y < 0 ||
 				obj.x > width || obj.y > height
@@ -81,8 +90,6 @@ function Targets(){
 				size:25,	
 			});
 		}
-		
-		
 	};
 	this.render = function(ctx){
 		for(var i = 0;i < this.maxID;i++){
@@ -106,9 +113,4 @@ function Targets(){
 			ctx.globalAlpha=1;
 		}
 	};
-	
-	
-	
-	
-	
 }

@@ -4,7 +4,10 @@ var canvas,
 	width,
 	height,
 	img_rock,
-	background;
+	background,
+	hp,
+	grade,
+	refresh;
 
 function init() {
 
@@ -19,6 +22,8 @@ function init() {
 	img_rock2.src = './spike 1.png';
 	background = new Image();
 	background.src = './background.png';
+	over = new Image();
+	over.src = './gameover.png';
 
 
 	window.onkeydown = keyLogger.keyDownListener;
@@ -33,18 +38,41 @@ function init() {
 
 	//Main game loop
 
-	setInterval(function () {
+	refresh = setInterval(function () {
 		updateGame(0.5);
 		renderGame();
 		renderobstacle();
 	}, 10);
-
+	this.gameover = function(){
+		grade = targets.get_grade();
+		ctx.drawImage(over,0,0, canvas.width,canvas.height);//endgame
+		if(Math.abs(grade) < 100){
+			ctx.fillText(grade,550,280);
+		}
+		else if(Math.abs(grade) < 1000){
+			ctx.fillText(grade,540,280);
+		}
+		else if(Math.abs(grade) < 10000){
+			ctx.fillText(grade,530,280);
+		}
+		else{
+			ctx.fillText(grade,520,280);	
+		}
+		ctx.font = "60pt Arial";
+	}
 }
 
 function updateGame(dt) {
 	bullets.update(dt*0.02);
 	targets.update(dt);
 	player.update(dt);
+	hp = targets.player_health();//main get playerhealth 若hp < 0 endgame
+	if(hp <= 0){
+		clearInterval(refresh);//重制interval 
+		setInterval(function () {
+		gameover();
+	}, 10);
+	}
 }
 
 function renderGame() {

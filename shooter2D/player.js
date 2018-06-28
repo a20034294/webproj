@@ -123,7 +123,6 @@ function Player() {
 				dist = d;
 				obj = this;
 			}
-		return { dist: dist, object: obj };
+		return { dist: dist, object: obj};
 	};
-
 }
