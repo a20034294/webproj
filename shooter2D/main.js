@@ -6,6 +6,7 @@ var canvas,
 	img_rock,
 	background,
 	hp,
+	grade,
 	refresh;
 
 function init() {
@@ -21,6 +22,8 @@ function init() {
 	img_rock2.src = './spike 1.png';
 	background = new Image();
 	background.src = './background.png';
+	over = new Image();
+	over.src = './gameover.png';
 
 
 	window.onkeydown = keyLogger.keyDownListener;
@@ -41,7 +44,21 @@ function init() {
 		renderobstacle();
 	}, 10);
 	this.gameover = function(){
-		ctx.drawImage(background,0,0, canvas.width,canvas.height);//endgame
+		grade = targets.get_grade();
+		ctx.drawImage(over,0,0, canvas.width,canvas.height);//endgame
+		if(Math.abs(grade) < 100){
+			ctx.fillText(grade,550,280);
+		}
+		else if(Math.abs(grade) < 1000){
+			ctx.fillText(grade,540,280);
+		}
+		else if(Math.abs(grade) < 10000){
+			ctx.fillText(grade,530,280);
+		}
+		else{
+			ctx.fillText(grade,520,280);	
+		}
+		ctx.font = "60pt Arial";
 	}
 }
 

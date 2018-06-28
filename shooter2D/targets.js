@@ -1,8 +1,8 @@
 var targets = new Targets();
-var player_hp = 10;//初始化player health
+var player_hp = 2;//初始化player health
 var img = new Image();
 	img.src = './1.png';
-var grade = 10;//init grade
+var grade = 0;//init grade
 function Targets(){
 	
 	this.objects = [];
@@ -34,6 +34,9 @@ function Targets(){
 	this.player_health = function(){//回傳playerhealth值
 		return player_hp;
 	};
+	this.get_grade = function(){
+		return grade;
+	}
 	this.update = function(dt){
 		console.log(grade);//retrun grade
 		for(var i = 0;i < this.maxID;i++){
