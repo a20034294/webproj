@@ -24,7 +24,7 @@ int main() {
         data[i].x = x;
         data[i++].y = y;
     }
-    cout << "r " << i;
+    cout << "r " << i << endl;
 
     while (1) {
         Sleep(100);

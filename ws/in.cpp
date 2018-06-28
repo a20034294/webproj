@@ -43,8 +43,10 @@ int main() {
         data[id] = player(id, type, x, y);
         w = fopen("in.txt", "w");
         for (int j = 0; j < 50; j++) {
-            fprintf(w, "%d %d %d %d\n", data[j].id, data[j].type, data[j].x,
-                    data[j].y);
+            if (data[j].id) {
+                fprintf(w, "%d %d %d %d\n", data[j].id, data[j].type, data[j].x,
+                        data[j].y);
+            }
         }
         fclose(w);
         fclose(r);
