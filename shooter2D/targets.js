@@ -1,5 +1,5 @@
 var targets = new Targets();
-var player_hp = 2;//初始化player health
+var player_hp = 10;//初始化player health
 var img = new Image();
 	img.src = './1.png';
 var grade = 0;//init grade
