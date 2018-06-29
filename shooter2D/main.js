@@ -22,6 +22,8 @@ function init() {
 	img_rock2.src = './spike 1.png';
 	background = new Image();
 	background.src = './background.png';
+	healthbar = new Image();
+	healthbar.src = './blood_red_bar.png';
 	over = new Image();
 	over.src = './gameover.png';
 
@@ -41,6 +43,7 @@ function init() {
 	refresh = setInterval(function () {
 		updateGame(0.5);
 		renderGame();
+		drawhealth();
 		renderobstacle();
 	}, 10);
 	this.gameover = function(){
@@ -93,4 +96,8 @@ function renderobstacle() {
 	ctx.drawImage(img_rock2, 500, 300, 300, 100);
 	ctx.drawImage(img_rock2, 750, 100, 300, 100);
 	ctx.drawImage(img_rock, 900, 400, 100, 200);
+}
+function drawhealth(){
+	ctx.drawImage(healthbar, 10, 700,hp*50, 20);
+	console.log('123');
 }
